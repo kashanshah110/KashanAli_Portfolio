@@ -58,13 +58,21 @@ h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:28px}
 .fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:55;padding:14px 20px;border-radius:99px;background:#25d366;color:#02110f;font-weight:700;animation:pl 2s infinite}
 @keyframes pl{0%{box-shadow:0 0 0 0 rgba(37,211,102,.7)}100%{box-shadow:0 0 0 22px rgba(37,211,102,0)}}
 footer{text-align:center;color:var(--m);padding:30px 0 90px;font-size:.85rem}
+.menu-toggle{display:none}
 
 @media(max-width:800px){
   html{scroll-padding-top:84px}
   nav{padding:calc(10px + env(safe-area-inset-top,0px)) 4vw 10px}
   .logo{font-size:1rem;letter-spacing:1.5px}
-  nav div{display:flex;align-items:center;gap:14px}
-  nav div a{margin-left:0;font-size:.82rem}
+  .menu-toggle{display:flex;width:44px;height:44px;padding:10px;border:1px solid rgba(0,240,255,.28);border-radius:12px;background:rgba(4,20,24,.9);flex-direction:column;justify-content:center;gap:5px;cursor:pointer}
+  .menu-toggle span{display:block;width:22px;height:2px;margin:0 auto;border-radius:2px;background:var(--c);transition:.3s}
+  .nav-open .menu-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-open .menu-toggle span:nth-child(2){opacity:0}
+  .nav-open .menu-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav-links{position:absolute;top:calc(100% + 8px);left:4vw;right:4vw;display:flex;flex-direction:column;gap:0;padding:8px;border:1px solid rgba(0,240,255,.22);border-radius:16px;background:rgba(2,7,10,.96);backdrop-filter:blur(18px);box-shadow:0 18px 40px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s ease}
+  .nav-open .nav-links{opacity:1;visibility:visible;transform:translateY(0)}
+  .nav-links a{margin:0;padding:12px 14px;border-radius:10px;color:var(--m);font-size:.92rem}
+  .nav-links a:hover{background:rgba(0,240,255,.08);color:var(--g)}
   section{min-height:auto;padding:96px 5vw 48px}
   #hero{min-height:100svh;grid-template-columns:1fr;gap:28px;text-align:center}
   #hero .row,.stats{justify-content:center}
@@ -80,9 +88,6 @@ footer{text-align:center;color:var(--m);padding:30px 0 90px;font-size:.85rem}
 
 @media(max-width:560px){
   nav{gap:12px}
-  nav div{gap:10px;max-width:68vw;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-  nav div::-webkit-scrollbar{display:none}
-  nav div a{font-size:.78rem}
   h2{margin-bottom:20px}
   #hero{padding-top:124px}
   #hero h1{font-size:clamp(2.3rem,13vw,3.5rem)}
@@ -107,8 +112,6 @@ footer{text-align:center;color:var(--m);padding:30px 0 90px;font-size:.85rem}
 
 @media(max-width:380px){
   .logo{font-size:.88rem}
-  nav div{gap:8px}
-  nav div a{font-size:.72rem}
   .ph{width:min(210px,58vw)}
   #hero{padding-inline:4vw}
   #contact .row{grid-template-columns:1fr}
